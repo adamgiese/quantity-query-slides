@@ -1,0 +1,411 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='/css/reveal.css'>
+    <link rel='stylesheet' href='/css/serif.css'>
+
+    <style> 
+      .current-fragment.grow {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+      .reveal pre {
+        width: 100%;
+      }
+      .reveal pre code {
+        background: black;
+        color: #d07;
+      }
+      .reveal pre code .fragment {
+        opacity: .7 !important;
+        display: inline !important;
+        visibility: visible !important;
+      }
+      .reveal pre code .current-fragment {
+        opacity: 1 !important;
+      }
+      .reveal pre code .comment {
+        color: #ababab;
+      }
+      .reveal figcaption {
+        font-size: 50%;
+        text-align: left;
+      }
+      .reveal iframe {
+        width: 100%;
+        height: 60vh;
+      }
+      .reveal table {
+        font-family: sans-serif;
+        border: 1px solid;
+      }
+      .reveal td {
+        border-right: 1px solid;
+      }
+      .reveal .n-value,
+      .reveal th {
+        background: #c3c3c3;
+      }
+      .reveal tr:nth-child(even) {
+        background: white;
+      }
+      .reveal .dots {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+      .reveal .dot {
+        width: 1em;
+        height: 1em;
+        margin: .5em;
+        border-radius: 50%;
+        background: currentColor;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class='reveal'>
+      <div class='slides'>
+        <!-- Title Card -->
+        <section>
+          <h2>
+            Quantity Selectors in Sass
+            <small>Adam Giese</small>
+          </h2>
+        </section>
+
+        <!-- Some nth-child selectors -->
+        <section>
+          <figure>
+            <pre><code>
+<span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
+<span class='fragment'>:nth-child(3n){&hellip;}   <span class='comment'>// every third child</span></span>
+<span class='fragment'>:nth-child(3n+1){&hellip;} <span class='comment'>// every third child, with offset</span></span>
+<span class='fragment'>:nth-child(-n+3){&hellip;} <span class='comment'>// the first three children</span></span>
+<span class='fragment'>:nth-child(n+4){&hellip;}  <span class='comment'>// all except first three children</span></span>
+            </code></pre>
+            <figcaption>Some basic nth-child recipes</figcaption>
+          </figure>
+        </section>
+
+        <!-- How nth-child works-->
+        <section>
+          <table>
+            <tr class='heading'>
+              <th></th>
+              <th>3</th>
+              <th>3n</th>
+              <th>3n+1</th>
+              <th>-n+3</th>
+              <th>n+4</th>
+            </tr>
+            <tr>
+              <td class='n-value'>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+              <td>3</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td class='n-value'>1</td>
+              <td>3</td>
+              <td>3</td>
+              <td>4</td>
+              <td>2</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td class='n-value'>2</td>
+              <td>3</td>
+              <td>6</td>
+              <td>7</td>
+              <td>1</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td class='n-value'>3</td>
+              <td>3</td>
+              <td>9</td>
+              <td>10</td>
+              <td>0</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td class='n-value'>4</td>
+              <td>3</td>
+              <td>12</td>
+              <td>13</td>
+              <td>-1</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td colspan='6' style='text-align: center;'>&hellip;</td>
+            </tr>
+            <tr>
+              <td class='n-value'>100</td>
+              <td>3</td>
+              <td>300</td>
+              <td>301</td>
+              <td>-97</td>
+              <td>104</td>
+            </tr>
+          </table>
+        </section>
+
+        <!-- chaining them together -->
+        <section>
+          <h3>Now for the fun part.</h3>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+  background: #d07;
+}
+          </code></pre>
+          <ul class='dots last-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.last-eight .dot:nth-last-child(-n+8){
+              background: #d07;
+            }
+          </style>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+  background: #d07;
+}
+
+li:first-child{ <span class='comment'>// the first child</span>
+  background: #bada55;
+}
+          </code></pre>
+          <ul class='dots last-eight-with-first'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.last-eight-with-first .dot:nth-last-child(-n+8){
+              background: #d07;
+            }
+            .reveal .dots.last-eight-with-first .dot:first-child{
+              background: #bada55;
+            }
+          </style>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+  background: #d07;
+}
+
+li:first-child{ <span class='comment'>// the first child</span>
+  background: #bada55;
+}
+
+li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</span>
+  background:#2ad;
+} 
+          </code></pre>
+          <ul class='fragment dots last-eight-and-first'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='fragment dots last-eight-and-first'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8){
+              background: #d07;
+            }
+            .reveal .dots.last-eight-and-first .dot:first-child{
+              background: #bada55;
+            }
+            .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8):first-child{
+              background: #2ad;
+            }
+          </style>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
+li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling </span>
+  background:#2ad;
+} 
+          </code></pre>
+          <ul class='fragment dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='fragment dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='fragment dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.at-most-eight .dot:nth-last-child(-n+8):first-child,
+            .reveal .dots.at-most-eight .dot:nth-last-child(-n+8):first-child ~ li{
+              background: #2ad;
+            }
+          </style>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
+li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
+  background:#2ad;
+} 
+          </code></pre>
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.at-least-six .dot:nth-last-child(n+6):first-child,
+            .reveal .dots.at-least-six .dot:nth-last-child(n+6):first-child ~ li{
+              background: #2ad;
+            }
+          </style>
+        </section>
+
+        <section>
+          <pre><code>
+li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
+li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
+  background:#2ad;
+} 
+          </code></pre>
+          <ul class='dots even-total'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots even-total'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots even-total'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <style>
+            .reveal .dots.even-total .dot:nth-last-child(even):first-child,
+            .reveal .dots.even-total .dot:nth-last-child(even):first-child ~ li{
+              background: #2ad;
+            }
+          </style>
+        </section>
+      </div>
+    </div>
+    <script src='/reveal.js'></script>
+    <script>
+      Reveal.initialize( {
+        'slideNumber': true,
+        'history': true,
+      });
+    </script>
+  </body>
+</html>
