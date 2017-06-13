@@ -58,9 +58,9 @@
         margin: 0;
       }
       .reveal .dot {
-        width: 1em;
-        height: 1em;
-        margin: .5em;
+        width: .5em;
+        height: .5em;
+        margin: .25em;
         border-radius: 50%;
         background: currentColor;
       }
@@ -399,6 +399,54 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             }
           </style>
         </section>
+
+        <section>
+<pre><code>@mixin has-nth($expression, $element: '*') {
+  &:nth-last-child(#{$expression}):first-child,
+  &:nth-last-child(#{$expression}):first-child ~ #{$element} {
+    @content;
+  }
+}</code></pre>
+        </section>
+        <section>
+<pre><code>li {
+  @include has-nth('3n', 'li') {
+    border-radius: 0;
+  }
+}</code></pre>
+          <ul class='dots divisible-by-three'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots divisible-by-three'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots divisible-by-three'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+        </section>
+        <style>
+            .reveal .dots.divisible-by-three .dot:nth-last-child(3n):first-child,
+            .reveal .dots.divisible-by-three .dot:nth-last-child(3n):first-child ~ li{
+              border-radius: 0;
+            }
+          </style>
       </div>
     </div>
     <script src='/reveal.js'></script>
