@@ -81,13 +81,11 @@
         <!-- Some nth-child selectors -->
         <section>
           <figure>
-            <pre><code>
-<span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
+<pre><code><span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
 <span class='fragment'>:nth-child(3n){&hellip;}   <span class='comment'>// every third child</span></span>
 <span class='fragment'>:nth-child(3n+1){&hellip;} <span class='comment'>// every third child, with offset</span></span>
 <span class='fragment'>:nth-child(-n+3){&hellip;} <span class='comment'>// the first three children</span></span>
-<span class='fragment'>:nth-child(n+4){&hellip;}  <span class='comment'>// all except first three children</span></span>
-            </code></pre>
+<span class='fragment'>:nth-child(n+4){&hellip;}  <span class='comment'>// all except first three children</span></span></code></pre>
             <figcaption>Some basic nth-child recipes</figcaption>
           </figure>
         </section>
@@ -163,11 +161,9 @@
         </section>
 
         <section>
-          <pre><code>
-li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+<pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
-}
-          </code></pre>
+}</code></pre>
           <ul class='dots last-eight'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -188,16 +184,14 @@ li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
           </style>
         </section>
 
-        <section>
-          <pre><code>
-li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+<section>
+<pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
 }
 
 li:first-child{ <span class='comment'>// the first child</span>
   background: #bada55;
-}
-          </code></pre>
+}</code></pre>
           <ul class='dots last-eight-with-first'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -222,8 +216,7 @@ li:first-child{ <span class='comment'>// the first child</span>
         </section>
 
         <section>
-          <pre><code>
-li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
+<pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
 }
 
@@ -233,8 +226,7 @@ li:first-child{ <span class='comment'>// the first child</span>
 
 li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</span>
   background:#2ad;
-} 
-          </code></pre>
+}</code></pre>
           <ul class='fragment dots last-eight-and-first'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -273,12 +265,10 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</s
         </section>
 
         <section>
-          <pre><code>
-li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
+<pre><code>li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
 li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
-} 
-          </code></pre>
+}</code></pre>
           <ul class='fragment dots at-most-eight'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -319,12 +309,10 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
         </section>
 
         <section>
-          <pre><code>
-li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
+<pre><code>li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
 li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
-} 
-          </code></pre>
+}</code></pre>
           <ul class='dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -360,12 +348,10 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
         </section>
 
         <section>
-          <pre><code>
-li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
+<pre><code>li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
 li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
-} 
-          </code></pre>
+}</code></pre>
           <ul class='dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
