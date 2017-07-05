@@ -11,8 +11,7 @@
       .reveal pre {
         width: 100%;
       }
-      .reveal pre code {
-        font-family: "Hack", monospace;
+      .reveal code { font-family: "Hack", monospace;
         background: black;
         color: #d07;
       }
@@ -56,13 +55,23 @@
         align-items: center;
         padding: 0;
         margin: 0;
+        counter-reset: dots;
       }
       .reveal .dot {
+        counter-increment: dots;
         width: .5em;
         height: .5em;
         margin: .25em;
         border-radius: 50%;
         background: currentColor;
+        position: relative;
+      }
+      .reveal .dot:last-child:after {
+        content: counter(dots);
+        font-size: 16px;
+        position: absolute;
+        top: 1px;
+        right: -2em;
       }
     </style>
 
@@ -74,6 +83,7 @@
         <section>
           <h2>
             Quantity Selectors in Sass
+            <br />
             <small>Adam Giese</small>
           </h2>
         </section>
@@ -251,6 +261,14 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</s
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
+          <hr />
+          <ul class='fragment dots last-eight-and-first'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
           <style>
             .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8){
               background: #d07;
@@ -313,7 +331,7 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
 li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
 }</code></pre>
-          <ul class='dots at-least-six'>
+          <ul class='fragment dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -321,7 +339,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots at-least-six'>
+          <ul class='fragment dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -330,7 +348,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots at-least-six'>
+          <ul class='fragment dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -352,7 +370,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
 li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
 }</code></pre>
-          <ul class='dots even-total'>
+          <ul class='fragment dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -360,7 +378,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots even-total'>
+          <ul class='fragment dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -369,7 +387,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots even-total'>
+          <ul class='fragment dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -387,12 +405,15 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
         </section>
 
         <section>
+          <figure>
 <pre><code>@mixin has-nth($expression, $element: '*') {
   &:nth-last-child(#{$expression}):first-child,
   &:nth-last-child(#{$expression}):first-child ~ #{$element} {
     @content;
   }
 }</code></pre>
+            <figcaption>A Sass mixin for reusability</figcaption>
+          </figure>
         </section>
         <section>
 <pre><code>li {
@@ -400,7 +421,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
     border-radius: 0;
   }
 }</code></pre>
-          <ul class='dots divisible-by-three'>
+          <ul class='fragment dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -410,7 +431,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots divisible-by-three'>
+          <ul class='fragment dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -419,7 +440,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='dots divisible-by-three'>
+          <ul class='fragment dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -432,7 +453,52 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             .reveal .dots.divisible-by-three .dot:nth-last-child(3n):first-child ~ li{
               border-radius: 0;
             }
-          </style>
+        </style>
+        <section>
+          <figure>
+<pre><code>@mixin at-least($quantity, $element: '*') {
+  @include has-nth('n + #{$quantity}', $element) {
+    @content;
+  }
+}
+</code></pre>
+            <figcaption>
+            An <code>at-least</code> Sass mixin
+            </figcaption>
+          </figure>
+        </section>
+        <section>
+<pre><code>@include at-least(6) {
+  background: $blue;
+}
+</code></pre>
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-least-six'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+        </section>
       </div>
     </div>
     <script src='/reveal.js'></script>
