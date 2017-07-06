@@ -414,6 +414,9 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <figcaption>A generic Sass mixin for selecting by quantity</figcaption>
           </figure>
         </section>
+        <section>
+          <p>Any valid <code>:nth-child</code> expression can be passed to the <code>has-nth()</code> mixin.</p>
+        </section>
         <section contenteditable spellcheck="false">
 <pre><code>li {
   @include has-nth('3n', 'li') {
@@ -453,6 +456,9 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
               border-radius: 0;
             }
         </style>
+        <section>
+          <p>To increase readability, <code>$expression</code> can be calculated by another mixin.</p>
+        </section>
         <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin at-least($quantity, $element: '*') {
@@ -460,8 +466,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
     @content;
   }
 }
-</code></pre>
-            <figcaption>
+</code></pre> <figcaption>
             An <code>at-least</code> Sass mixin
             </figcaption>
           </figure>
@@ -497,6 +502,32 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
+        </section>
+        <section contenteditable spellcheck="false">
+          <figure>
+<pre><code>@mixin at-most($quantity, $element: '*') {
+  @include has-nth('-n + #{$quantity}', $element) {
+    @content;
+  }
+}
+</code></pre>
+            <figcaption>
+            An <code>at-most</code> Sass mixin
+            </figcaption>
+          </figure>
+        </section>
+<section contenteditable spellcheck="false">
+          <figure>
+<pre><code>@mixin divisible-by($quantity, $element: '*', $offset: 0) {
+  @include has-nth('#{$quantity}n + #{$offset}', $element) {
+    @content;
+  }
+}
+</code></pre>
+            <figcaption>
+            A <code>divisible by</code> Sass mixin
+            </figcaption>
+          </figure>
         </section>
       </div>
     </div>
