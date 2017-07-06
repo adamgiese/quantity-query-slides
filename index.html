@@ -4,6 +4,9 @@
     <link rel='stylesheet' href='/css/serif.css'>
 
     <style> 
+      [contenteditable] {
+        outline: none;
+      }
       .current-fragment.grow {
         font-weight: 700;
         text-decoration: underline;
@@ -11,9 +14,13 @@
       .reveal pre {
         width: 100%;
       }
-      .reveal code { font-family: "Hack", monospace;
+      .reveal code { 
+        font-family: "Hack", monospace;
         background: black;
         color: #d07;
+      }
+      .reveal code::selection { 
+        background: #d07;
       }
       .reveal pre code .fragment {
         opacity: .7 !important;
@@ -80,16 +87,12 @@
     <div class='reveal'>
       <div class='slides'>
         <!-- Title Card -->
-        <section>
-          <h2>
-            Quantity Selectors in Sass
-            <br />
-            <small>Adam Giese</small>
-          </h2>
+        <section contenteditable spellcheck="false">
+          <h1>Quantity Selectors</h1>
         </section>
 
         <!-- Some nth-child selectors -->
-        <section>
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code><span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
 <span class='fragment'>:nth-child(3n){&hellip;}   <span class='comment'>// every third child</span></span>
@@ -101,7 +104,7 @@
         </section>
 
         <!-- How nth-child works-->
-        <section>
+        <section contenteditable spellcheck="false">
           <table>
             <tr class='heading'>
               <th></th>
@@ -166,11 +169,7 @@
         </section>
 
         <!-- chaining them together -->
-        <section>
-          <h3>Now for the fun part.</h3>
-        </section>
-
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
 }</code></pre>
@@ -187,14 +186,14 @@
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
-          <style>
-            .reveal .dots.last-eight .dot:nth-last-child(-n+8){
-              background: #d07;
-            }
-          </style>
         </section>
+        <style>
+          .reveal .dots.last-eight .dot:nth-last-child(-n+8){
+            background: #d07;
+          }
+        </style>
 
-<section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
 }
@@ -215,17 +214,17 @@ li:first-child{ <span class='comment'>// the first child</span>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
-          <style>
-            .reveal .dots.last-eight-with-first .dot:nth-last-child(-n+8){
-              background: #d07;
-            }
-            .reveal .dots.last-eight-with-first .dot:first-child{
-              background: #bada55;
-            }
-          </style>
         </section>
+        <style>
+          .reveal .dots.last-eight-with-first .dot:nth-last-child(-n+8){
+            background: #d07;
+          }
+          .reveal .dots.last-eight-with-first .dot:first-child{
+            background: #bada55;
+          }
+        </style>
 
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: #d07;
 }
@@ -234,7 +233,7 @@ li:first-child{ <span class='comment'>// the first child</span>
   background: #bada55;
 }
 
-li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</span>
+li:nth-last-child(-n+8):first-child{<span class='comment'> // first of at most eight</span>
   background:#2ad;
 }</code></pre>
           <ul class='fragment dots last-eight-and-first'>
@@ -269,7 +268,8 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</s
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
-          <style>
+        </section>
+        <style>
             .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8){
               background: #d07;
             }
@@ -280,14 +280,13 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // ^ both of those</s
               background: #2ad;
             }
           </style>
-        </section>
 
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
 li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
 }</code></pre>
-          <ul class='fragment dots at-most-eight'>
+          <ul class='dots at-most-eight'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -298,14 +297,14 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots at-most-eight'>
+          <ul class='dots at-most-eight'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots at-most-eight'>
+          <ul class='dots at-most-eight'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -326,12 +325,12 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
           </style>
         </section>
 
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
 li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
 }</code></pre>
-          <ul class='fragment dots at-least-six'>
+          <ul class='dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -339,7 +338,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots at-least-six'>
+          <ul class='dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -348,7 +347,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots at-least-six'>
+          <ul class='dots at-least-six'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -365,12 +364,12 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
           </style>
         </section>
 
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
 li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:#2ad;
 }</code></pre>
-          <ul class='fragment dots even-total'>
+          <ul class='dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -378,7 +377,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots even-total'>
+          <ul class='dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -387,7 +386,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots even-total'>
+          <ul class='dots even-total'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -404,7 +403,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
           </style>
         </section>
 
-        <section>
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin has-nth($expression, $element: '*') {
   &:nth-last-child(#{$expression}):first-child,
@@ -412,16 +411,16 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
     @content;
   }
 }</code></pre>
-            <figcaption>A Sass mixin for reusability</figcaption>
+            <figcaption>A generic Sass mixin for selecting by quantity</figcaption>
           </figure>
         </section>
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>li {
   @include has-nth('3n', 'li') {
     border-radius: 0;
   }
 }</code></pre>
-          <ul class='fragment dots divisible-by-three'>
+          <ul class='dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -431,7 +430,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots divisible-by-three'>
+          <ul class='dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -440,7 +439,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
           <hr />
-          <ul class='fragment dots divisible-by-three'>
+          <ul class='dots divisible-by-three'>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
             <li class='dot'>&nbsp;</li>
@@ -454,7 +453,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
               border-radius: 0;
             }
         </style>
-        <section>
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin at-least($quantity, $element: '*') {
   @include has-nth('n + #{$quantity}', $element) {
@@ -467,7 +466,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-        <section>
+        <section contenteditable spellcheck="false">
 <pre><code>@include at-least(6) {
   background: $blue;
 }
