@@ -4,18 +4,27 @@
     <link rel='stylesheet' href='/css/serif.css'>
 
     <style> 
-      [contenteditable] {
+      [contenteditableee] {
         outline: none;
       }
       .current-fragment.grow {
         font-weight: 700;
         text-decoration: underline;
       }
+      .reveal h1 {
+        font-size: 2em;
+      }
+      .reveal h2 {
+        font-size: 1em;
+      }
       .reveal pre {
         width: 100%;
       }
       .reveal code { 
         font-family: "Hack", monospace;
+        background: #c3c3c3;
+      }
+      .reveal pre code {
         background: black;
         color: #d07;
       }
@@ -34,6 +43,10 @@
         color: #ababab;
       }
       .reveal figcaption {
+        font-size: 50%;
+        text-align: left;
+      }
+      .reveal caption {
         font-size: 50%;
         text-align: left;
       }
@@ -87,91 +100,95 @@
     <div class='reveal'>
       <div class='slides'>
         <!-- Title Card -->
-        <section contenteditable spellcheck="false">
-          <h1>Quantity Selectors</h1>
+        <section contenteditableee spellcheck="false">
+          <h1>Quantity Selectors in Sass</h1>
+          <h2>ATX Sass | September 21<sup>st</sup>, 2017</h2>
+        </section>
+
+        <!-- How nth-child works-->
+        <section contenteditableee spellcheck="false">
+          <figure>
+            <table>
+              <caption>How <code>nth-child</code> works</caption>
+              <tr class='heading'>
+                <th></th>
+                <th>3</th>
+                <th>3n</th>
+                <th>3n+1</th>
+                <th>-n+3</th>
+                <th>n+4</th>
+              </tr>
+              <tr>
+                <td class='n-value'>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>1</td>
+                <td>3</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td class='n-value'>1</td>
+                <td>3</td>
+                <td>3</td>
+                <td>4</td>
+                <td>2</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td class='n-value'>2</td>
+                <td>3</td>
+                <td>6</td>
+                <td>7</td>
+                <td>1</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td class='n-value'>3</td>
+                <td>3</td>
+                <td>9</td>
+                <td>10</td>
+                <td>0</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td class='n-value'>4</td>
+                <td>3</td>
+                <td>12</td>
+                <td>13</td>
+                <td>-1</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td colspan='6' style='text-align: center;'>&hellip;</td>
+              </tr>
+              <tr>
+                <td class='n-value'>100</td>
+                <td>3</td>
+                <td>300</td>
+                <td>301</td>
+                <td>-97</td>
+                <td>104</td>
+              </tr>
+            </table>
+          </figure>
         </section>
 
         <!-- Some nth-child selectors -->
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
           <figure>
 <pre><code><span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
 <span class='fragment'>:nth-child(3n){&hellip;}   <span class='comment'>// every third child</span></span>
 <span class='fragment'>:nth-child(3n+1){&hellip;} <span class='comment'>// every third child, with offset</span></span>
 <span class='fragment'>:nth-child(-n+3){&hellip;} <span class='comment'>// the first three children</span></span>
 <span class='fragment'>:nth-child(n+4){&hellip;}  <span class='comment'>// all except first three children</span></span></code></pre>
-            <figcaption>Some basic nth-child recipes</figcaption>
+            <figcaption>Some basic <code>nth-child</code> recipes</figcaption>
           </figure>
         </section>
 
-        <!-- How nth-child works-->
-        <section contenteditable spellcheck="false">
-          <table>
-            <tr class='heading'>
-              <th></th>
-              <th>3</th>
-              <th>3n</th>
-              <th>3n+1</th>
-              <th>-n+3</th>
-              <th>n+4</th>
-            </tr>
-            <tr>
-              <td class='n-value'>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td class='n-value'>1</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>2</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td class='n-value'>2</td>
-              <td>3</td>
-              <td>6</td>
-              <td>7</td>
-              <td>1</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td class='n-value'>3</td>
-              <td>3</td>
-              <td>9</td>
-              <td>10</td>
-              <td>0</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td class='n-value'>4</td>
-              <td>3</td>
-              <td>12</td>
-              <td>13</td>
-              <td>-1</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td colspan='6' style='text-align: center;'>&hellip;</td>
-            </tr>
-            <tr>
-              <td class='n-value'>100</td>
-              <td>3</td>
-              <td>300</td>
-              <td>301</td>
-              <td>-97</td>
-              <td>104</td>
-            </tr>
-          </table>
-        </section>
-
         <!-- chaining them together -->
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
-  background: #d07;
+  background: red;
 }</code></pre>
           <ul class='dots last-eight'>
             <li class='dot'>&nbsp;</li>
@@ -189,17 +206,17 @@
         </section>
         <style>
           .reveal .dots.last-eight .dot:nth-last-child(-n+8){
-            background: #d07;
+            background: red;
           }
         </style>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
-  background: #d07;
+  background: red;
 }
 
 li:first-child{ <span class='comment'>// the first child</span>
-  background: #bada55;
+  background: green;
 }</code></pre>
           <ul class='dots last-eight-with-first'>
             <li class='dot'>&nbsp;</li>
@@ -217,24 +234,24 @@ li:first-child{ <span class='comment'>// the first child</span>
         </section>
         <style>
           .reveal .dots.last-eight-with-first .dot:nth-last-child(-n+8){
-            background: #d07;
+            background: red;
           }
           .reveal .dots.last-eight-with-first .dot:first-child{
-            background: #bada55;
+            background: green;
           }
         </style>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
-  background: #d07;
+  background: red;
 }
 
 li:first-child{ <span class='comment'>// the first child</span>
-  background: #bada55;
+  background: green;
 }
 
 li:nth-last-child(-n+8):first-child{<span class='comment'> // first of at most eight</span>
-  background:#2ad;
+  background:blue;
 }</code></pre>
           <ul class='fragment dots last-eight-and-first'>
             <li class='dot'>&nbsp;</li>
@@ -271,20 +288,20 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // first of at most e
         </section>
         <style>
             .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8){
-              background: #d07;
+              background: red;
             }
             .reveal .dots.last-eight-and-first .dot:first-child{
-              background: #bada55;
+              background: green;
             }
             .reveal .dots.last-eight-and-first .dot:nth-last-child(-n+8):first-child{
-              background: #2ad;
+              background: blue;
             }
           </style>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
 li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling </span>
-  background:#2ad;
+  background:blue;
 }</code></pre>
           <ul class='dots at-most-eight'>
             <li class='dot'>&nbsp;</li>
@@ -320,15 +337,15 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
           <style>
             .reveal .dots.at-most-eight .dot:nth-last-child(-n+8):first-child,
             .reveal .dots.at-most-eight .dot:nth-last-child(-n+8):first-child ~ li{
-              background: #2ad;
+              background: blue;
             }
           </style>
         </section>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
 li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
-  background:#2ad;
+  background:blue;
 }</code></pre>
           <ul class='dots at-least-six'>
             <li class='dot'>&nbsp;</li>
@@ -359,15 +376,15 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
           <style>
             .reveal .dots.at-least-six .dot:nth-last-child(n+6):first-child,
             .reveal .dots.at-least-six .dot:nth-last-child(n+6):first-child ~ li{
-              background: #2ad;
+              background: blue;
             }
           </style>
         </section>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
 li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
-  background:#2ad;
+  background:blue;
 }</code></pre>
           <ul class='dots even-total'>
             <li class='dot'>&nbsp;</li>
@@ -398,12 +415,12 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
           <style>
             .reveal .dots.even-total .dot:nth-last-child(even):first-child,
             .reveal .dots.even-total .dot:nth-last-child(even):first-child ~ li{
-              background: #2ad;
+              background: blue;
             }
           </style>
         </section>
 
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin has-nth($expression, $element: '*') {
   &:nth-last-child(#{$expression}):first-child,
@@ -411,13 +428,13 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
     @content;
   }
 }</code></pre>
-            <figcaption>A generic Sass mixin for selecting by quantity</figcaption>
+            <figcaption>
+              <p>A generic Sass mixin for selecting by quantity</p>
+              <p>Any valid <code>:nth-child</code> expression can be passed to the <code>has-nth()</code> mixin.</p>
+            </figcaption>
           </figure>
         </section>
-        <section>
-          <p>Any valid <code>:nth-child</code> expression can be passed to the <code>has-nth()</code> mixin.</p>
-        </section>
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>li {
   @include has-nth('3n', 'li') {
     border-radius: 0;
@@ -456,22 +473,20 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
               border-radius: 0;
             }
         </style>
-        <section>
-          <p>To increase readability, <code>$expression</code> can be calculated by another mixin.</p>
-        </section>
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin at-least($quantity, $element: '*') {
   @include has-nth('n + #{$quantity}', $element) {
     @content;
   }
 }
-</code></pre> <figcaption>
-            An <code>at-least</code> Sass mixin
+</code></pre> 
+            <figcaption>
+              An <code>at-least</code> Sass mixin, an abstraction of <code>has-nth</code> for readability.
             </figcaption>
           </figure>
         </section>
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
 <pre><code>@include at-least(6) {
   background: $blue;
 }
@@ -503,7 +518,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
         </section>
-        <section contenteditable spellcheck="false">
+        <section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin at-most($quantity, $element: '*') {
   @include has-nth('-n + #{$quantity}', $element) {
@@ -516,7 +531,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-<section contenteditable spellcheck="false">
+<section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin divisible-by($quantity, $element: '*', $offset: 0) {
   @include has-nth('#{$quantity}n + #{$offset}', $element) {
@@ -528,6 +543,12 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             A <code>divisible by</code> Sass mixin
             </figcaption>
           </figure>
+        </section>
+        <section>
+          <h2>Use Cases</h2>
+        </section>
+        <section>
+          <iframe height='300' scrolling='no' title='WordPress Menu nth-child example, compact' src='//codepen.io/AdamGiese/embed/wdrewR/?height=300&theme-id=31301&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/AdamGiese/pen/wdrewR/'>WordPress Menu nth-child example, compact</a> by Adam Giese (<a href='https://codepen.io/AdamGiese'>@AdamGiese</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
         </section>
       </div>
     </div>
