@@ -105,6 +105,9 @@
           <h2>ATX Sass | September 21<sup>st</sup>, 2017</h2>
         </section>
 
+        <section contenteditableee spellcheck="false">
+          <h2>How <code>nth-child</code> works</h2>
+        </section>
         <!-- How nth-child works-->
         <section contenteditableee spellcheck="false">
           <figure>
@@ -183,6 +186,10 @@
 <span class='fragment'>:nth-child(n+4){&hellip;}  <span class='comment'>// all except first three children</span></span></code></pre>
             <figcaption>Some basic <code>nth-child</code> recipes</figcaption>
           </figure>
+        </section>
+
+        <section contenteditableee spellcheck="false">
+          <h2>Creating Quantity Queries</h2>
         </section>
 
         <!-- chaining them together -->
@@ -421,6 +428,10 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
         </section>
 
         <section contenteditableee spellcheck="false">
+          <h2>Abstracting Into Sass</h2>
+        </section>
+
+        <section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin has-nth($expression, $element: '*') {
   &:nth-last-child(#{$expression}):first-child,
@@ -556,6 +567,17 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             - Double width w/ cards
             - "Jack, Jill, and three other friends like this" as a list
             - Collapsible list
+        -->
+
+        <section>
+          <h2>Gotchas &amp; Considerations</h2>
+        </section>
+        <!-- 
+          TODO: 
+            - Clear fixes
+            - Doesn't account for 'hidden' elements
+            - Can only count either nth-child or nth-of-type. 
+            - Works best with elements with predictable siblings, such as `tr` or `li`.
         -->
       </div>
     </div>
