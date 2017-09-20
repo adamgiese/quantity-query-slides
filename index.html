@@ -542,7 +542,44 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-        <!-- TODO: add `at-most` dot example -->
+<section contenteditableee spellcheck="false">
+<pre><code>@include at-most(8) {
+  background: $blue;
+}
+</code></pre>
+          <ul class='dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+          <hr />
+          <ul class='dots at-most-eight'>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+            <li class='dot'>&nbsp;</li>
+          </ul>
+        </section>
 <section contenteditableee spellcheck="false">
           <figure>
 <pre><code>@mixin divisible-by($quantity, $element: '*', $offset: 0) {
