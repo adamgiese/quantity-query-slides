@@ -4,7 +4,7 @@
     <link rel='stylesheet' href='/css/serif.css'>
 
     <style> 
-      [contenteditableee] {
+      [contenteditable] {
         outline: none;
       }
       .current-fragment.grow {
@@ -103,16 +103,16 @@
     <div class='reveal'>
       <div class='slides'>
         <!-- Title Card -->
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <h1>Quantity Selectors in Sass</h1>
           <h2>ATX Sass | September 21<sup>st</sup>, 2017</h2>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <h2>How <code>nth-child</code> works</h2>
         </section>
         <!-- How nth-child works-->
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <figure>
             <table>
               <caption>How <code>nth-child</code> works</caption>
@@ -180,7 +180,7 @@
         </section>
 
         <!-- Some nth-child selectors -->
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code><span class='fragment'>:nth-child(3){&hellip;}    <span class='comment'>// the third child</span></span>
 <span class='fragment'>:nth-child(3n){&hellip;}   <span class='comment'>// every third child</span></span>
@@ -191,12 +191,12 @@
           </figure>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <h2>Creating Quantity Queries</h2>
         </section>
 
         <!-- chaining them together -->
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: red;
 }</code></pre>
@@ -220,7 +220,7 @@
           }
         </style>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: red;
 }
@@ -251,7 +251,7 @@ li:first-child{ <span class='comment'>// the first child</span>
           }
         </style>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8){ <span class='comment'>// the last eight children</span>
   background: red;
 }
@@ -308,7 +308,7 @@ li:nth-last-child(-n+8):first-child{<span class='comment'> // first of at most e
             }
           </style>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(-n+8):first-child,<span class='comment'> // first of at most eight</span>
 li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:blue;
@@ -352,7 +352,7 @@ li:nth-last-child(-n+8):first-child ~ li{ <span class='comment'> // or a sibling
           </style>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(n+6):first-child,<span class='comment'> // first of at least six</span>
 li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:blue;
@@ -391,7 +391,7 @@ li:nth-last-child(n+6):first-child ~ li{ <span class='comment'> // or a sibling 
           </style>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li:nth-last-child(even):first-child,<span class='comment'> // first of even</span>
 li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling </span>
   background:blue;
@@ -430,11 +430,11 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
           </style>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <h2>Abstracting Into Sass</h2>
         </section>
 
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin has-nth($expression, $element: '*') {
   &:nth-last-child(#{$expression}):first-child,
@@ -448,7 +448,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>li {
   @include has-nth('3n', 'li') {
     border-radius: 0;
@@ -487,7 +487,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
               border-radius: 0;
             }
         </style>
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin at-least($quantity, $element: '*') {
   @include has-nth('n + #{$quantity}', $element) {
@@ -500,7 +500,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
 <pre><code>@include at-least(6) {
   background: $blue;
 }
@@ -532,7 +532,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             <li class='dot'>&nbsp;</li>
           </ul>
         </section>
-        <section contenteditableee spellcheck="false">
+        <section contenteditable spellcheck="false">
           <figure>
 <pre><code>@mixin at-most($quantity, $element: '*') {
   @include has-nth('-n + #{$quantity}', $element) {
@@ -545,7 +545,7 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
             </figcaption>
           </figure>
         </section>
-<section contenteditableee spellcheck="false">
+<section contenteditable spellcheck="false">
 <pre><code>@include at-most(8) {
   background: $blue;
 }
