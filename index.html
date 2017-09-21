@@ -93,6 +93,9 @@
         top: 1px;
         right: -2em;
       }
+      .reveal .small {
+        font-size: 50%;
+      }
     </style>
 
   </head>
@@ -607,14 +610,17 @@ li:nth-last-child(even):first-child ~ li{ <span class='comment'> // or a sibling
 
         <section>
           <h2>Gotchas &amp; Considerations</h2>
+          <ul class='small'>
+            <li class='fragment'>Can only count either <code>nth-child</code> or <code>nth-of-type</code></li>
+            <li class='fragment'>Does not account for hidden elements</li>
+            <li class='fragment'>Styling can't affect parent elements (i.e., the <code>ul</code> can't be styled based on the number of <code>li</code> elements.</li>
+            <li class='fragment'>Works best with elements with predictable siblings, such as <code>tr</code> and <code>li</code></li>
+
+          </ul>
         </section>
-        <!-- 
-          TODO: 
-            - Clear fixes
-            - Doesn't account for 'hidden' elements
-            - Can only count either nth-child or nth-of-type. 
-            - Works best with elements with predictable siblings, such as `tr` or `li`.
-        -->
+        <section>
+          <h1>Questions?</h1>
+        </section>
       </div>
     </div>
     <script src='/reveal.js'></script>
